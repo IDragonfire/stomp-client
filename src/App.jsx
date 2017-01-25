@@ -16,8 +16,7 @@ export default class TestClient extends React.Component {
 
     initClient() {
         this.client = Stomp.client("ws://localhost:8080/gs-guide-websocket", "v11.stomp");
-        this.client.connect("", "",
-            function () {
+        this.client.connect("", "", () => {
                 this.client.subscribe("/topic/greetings",
                     function (message) {
                         console.log(message);
@@ -28,7 +27,7 @@ export default class TestClient extends React.Component {
     }
 
     send() {
-        this.client.send(this.state.channel, this.state.message);
+        this.client.send(this.state.channel,{}, this.state.message);
     }
 
 
