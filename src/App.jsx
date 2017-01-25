@@ -12,22 +12,23 @@ export default class TestClient extends React.Component {
         this.send = this.send.bind(this);
         this.handleChannel = this.handleChannel.bind(this);
         this.handleMessage = this.handleMessage.bind(this);
+        this.addSubscribtion = this.addSubscribtion.bind(this);
     }
 
     initClient() {
         this.client = Stomp.client("ws://localhost:8080/gs-guide-websocket", "v11.stomp");
         this.client.connect("", "", () => {
-                this.client.subscribe("/topic/greetings",
-                    function (message) {
-                        console.log(message);
-                    },
-                    {});
-            }
+            this.client.subscribe("/topic/greetings",
+                function (message) {
+                    console.log(message);
+                },
+                {});
+        }
         );
     }
 
     send() {
-        this.client.send(this.state.channel,{}, this.state.message);
+        this.client.send(this.state.channel, {}, this.state.message);
     }
 
 
@@ -39,13 +40,27 @@ export default class TestClient extends React.Component {
         this.setState({ message: event.target.value });
     }
 
+    addSubscribtion() {
+        this.client.subscribe(this.state.channel,
+            function (message) {
+                console.log(message);
+            });
+    }
+
     render() {
         return <div>
-            <label>Channel</label>
-            <input value={this.state.channel} onChange={this.handleChannel} />
-            <label>Message</label>
-            <input value={this.state.message} onChange={this.handleMessage} />
-            <button onClick={this.send}>Send Message</button>
+            <div>
+                <label>Channel</label>
+                <input value={this.state.channel} onChange={this.handleChannel} />
+                <label>Message</label>
+                <input value={this.state.message} onChange={this.handleMessage} />
+                <button onClick={this.send}>Send Message</button>
+            </div>
+            <div>
+                <label>Channel</label>
+                <input value={this.state.channel} onChange={this.handlechannel} />
+                <button onClick={this.addSubscribtion}>Subscribe to Channel</button>
+            </div>
         </div>;
     }
 }
