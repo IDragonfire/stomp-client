@@ -17,10 +17,7 @@ export default class TestClient extends React.Component {
 
     initClient() {
         this.client = Stomp.client("ws://localhost:8080/gs-guide-websocket", "v11.stomp");
-        this.client.connect("", "", () => {
-            this.client.subscribe("/topic/greetings");
-        }
-        );
+        this.client.connect("", "");
     }
 
     send() {

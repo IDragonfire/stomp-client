@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node_modules/.bin/webpack --progress --colors -p",
+    "build": "node_modules/.bin/webpack --progress --colors",
     "dev": "node_modules/.bin/webpack-dev-server --port 50001 --linline --content-base www"
   },
   "repository": {
