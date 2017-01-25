@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --progress --colors -p",
-    "dev": "node_modules/.bin/webpack-dev-server --linline --content-base www"
+    "dev": "node_modules/.bin/webpack-dev-server --port 50001 --linline --content-base www"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,6 @@
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "react-dom": "^15.4.2",
-    "sockjs": "^0.3.18"
   },
   "devDependencies": {
     "webpack": "^1.14.0",
