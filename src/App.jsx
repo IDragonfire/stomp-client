@@ -58,7 +58,7 @@ export default class TestClient extends React.Component {
             </div>
             <div>
                 <label>Channel</label>
-                <input value={this.state.channel} onChange={this.handlechannel} />
+                <input value={this.state.channel} onChange={this.handleChannel} />
                 <button onClick={this.addSubscribtion}>Subscribe to Channel</button>
             </div>
         </div>;
